@@ -1,1 +1,1 @@
-# Scala-Recommendation-Engine
+# Recommendation Engine built using Spark/Scala
