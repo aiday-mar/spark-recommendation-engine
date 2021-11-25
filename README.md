@@ -11,22 +11,31 @@ For my course Systems for Data Science given in EPFL, we built a movie recommend
 <img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true">
 </p>
 
-
 From this we can calculate the degree of similarity between two users s_{u,v} as follows:
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq5.PNG?raw=true)
+<p align="center">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq5.PNG?raw=true">
+</p>
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true)
+<p align="center">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true">
+</p>
 
 From this we can calulate the predicted rating of user u for movie i as follows:
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq3.PNG?raw=true)
+<p align="center">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq3.PNG?raw=true">
+</p>
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq2.PNG?raw=true)
+<p align="center">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq2.PNG?raw=true">
+</p>
 
 Once the predicted ratings are calculated, it is possible to test the algorithm using the mean absolute error on the testing set.
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/MAE.PNG?raw=true)
+<p align="center">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/MAE.PNG?raw=true">
+</p>
 
 Here is a description of the written code.m The scale function is implemented as follows:
 
@@ -55,8 +64,7 @@ for( i <- 0 until conf_users) {
    var sum = 0.0
    var counter = 0.0
 
-
-    for ((k,v) <- i_training_row_csc.activeIterator) {
+   for ((k,v) <- i_training_row_csc.activeIterator) {
        val row = k._1
        val col = k._2
        sum = sum + i_training_row_csc(row, col)
@@ -83,18 +91,13 @@ The processed denominators are then:
 
 ```
 val processed_denominators = DenseVector.zeros[Double](conf_users)
-
 val processed_normalized_deviations = train.copy
-
 
 for( i <- 0 until conf_users) {
 
    val i_squared_normalized_deviations = intermediate(i to i, 0 to conf_movies - 1)
-
    var sum = 0.0
-
    val i_squared_normalized_deviations_csc = CSCMatrix.tabulate(i_squared_normalized_deviations.rows, i_squared_normalized_deviations.cols)(i_squared_normalized_deviations(_, _))
-
    
 for ((k,v) <- i_squared_normalized_deviations_csc.activeIterator) {
       val row = k._1
@@ -129,9 +132,7 @@ def topk(user : Int) : (Int, IndexedSeq[(Int, Double)]) = {
    val user_specific_processed_normalized_deviations = processed_normalized_deviations_broadcasted(user to user, 0 to (conf_movies - 1))
    val user_specific_processed_normalized_deviations_csc = CSCMatrix.tabulate(user_specific_processed_normalized_deviations.rows, user_specific_processed_normalized_deviations.cols)(user_specific_processed_normalized_deviations(_, _))
 
-
    val user_specific_similarities = user_specific_processed_normalized_deviations_csc * processed_normalized_deviations.t
-
    user_specific_similarities(0, user) = 0
 
    (user, argtopk(user_specific_similarities, conf_k).map{v => (v._2, user_specific_similarities(v))})
@@ -167,24 +168,17 @@ def prediction(user : Int, item : Int) : Double = {
    val train_broadcasted = broadcast_train.value
    val average_rating_user_broadcasted = broadcast_average_rating_user.value
 
-
    var user_specific_similarities = similaritiesTopK_broadcasted(user to user, 0 to conf_users - 1)
-
    var user_specific_similarities_csc = CSCMatrix.tabulate(user_specific_similarities.rows, user_specific_similarities.cols)(user_specific_similarities(_, _))
-
    val column_train = train_broadcasted(0 to conf_users - 1, item to item)
-
    var column_train_csc = CSCMatrix.tabulate(column_train.rows, column_train.cols)(column_train(_, _))
-
    val numerator = user_specific_similarities_csc * column_train_csc
-
 
    for ((k,v) <- user_specific_similarities_csc.activeIterator) {
        val row = k._1
        val col = k._2
        user_specific_similarities_csc(row, col) = scala.math.abs(user_specific_similarities_csc(row, col))
    }
-
 
    for ((k,v) <- column_train_csc.activeIterator) {
        val row = k._1
@@ -194,10 +188,9 @@ def prediction(user : Int, item : Int) : Double = {
 
    val denominator = user_specific_similarities_csc * column_train_csc
    val user_specific_deviation = numerator(0,0).toDouble/denominator(0,0).toDouble
-
    val prediction = average_rating_user(user) + user_specific_deviation * scale(average_rating_user(user) + user_specific_deviation, average_rating_user(user))
-
-    prediction
+   
+   prediction
 }
 
 val predictions_parallelize = sc.parallelize((for((k,v) <- test.activeIterator) yield k).toSeq).map{case (user,item) => (user,item,prediction(user,item))}.collect()
