@@ -18,23 +18,23 @@ From this we can calculate the degree of similarity between two users s_{u,v} as
 </p>
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true" style="width:350px;">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true" style="width:400px;">
 </p>
 
 From this we can calulate the predicted rating of user u for movie i as follows:
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq3.PNG?raw=true" style="width:350px;">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq3.PNG?raw=true" style="width:400px;">
 </p>
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq2.PNG?raw=true" style="width:350px;">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq2.PNG?raw=true" style="width:400px;">
 </p>
 
 Once the predicted ratings are calculated, it is possible to test the algorithm using the mean absolute error on the testing set.
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/MAE.PNG?raw=true" style="width:300px;">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/MAE.PNG?raw=true" style="width:400px;">
 </p>
 
 Here is a description of the written code.m The scale function is implemented as follows:
