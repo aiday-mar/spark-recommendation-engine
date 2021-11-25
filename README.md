@@ -3,7 +3,7 @@
 
 For my course Systems for Data Science given in EPFL, we built a movie recommendation engine using Spark. We used the MovieLens 100K dataset, and tested the implementation on 25 million users. Since this is a big number of people, we used the breeze library to represent the matrices as sparse matrices CSCMatrix. We describe the algorithm used. Suppose r_{u,i} is the rating given by user u to movie i, and r_{u,.} is the average rating by the user u and r_{.,i} is the average rating for movie i. Then the scaled ratings are given by:
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq6.PNG?raw=true)
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq6.PNG?raw=true" width="300px">
 
 ![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true)
 
