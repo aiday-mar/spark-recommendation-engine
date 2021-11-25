@@ -1,5 +1,7 @@
 # Recommendation Engine built using Spark/Scala
 
+![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/algo1.PNG?raw=true)
+
 ![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/MAE.PNG?raw=true)
 
 ![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq1.PNG?raw=true)
