@@ -4,11 +4,11 @@
 For my course Systems for Data Science given in EPFL, we built a movie recommendation engine using Spark. We used the MovieLens 100K dataset, and tested the implementation on 25 million users. Since this is a big number of people, we used the breeze library to represent the matrices as sparse matrices CSCMatrix. We describe the algorithm used. Suppose r_{u,i} is the rating given by user u to movie i, and r_{u,.} is the average rating by the user u and r_{.,i} is the average rating for movie i. Then the scaled ratings are given by:
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq6.PNG?raw=true" style="width:300px;">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq6.PNG?raw=true" style="width:250px;">
 </p>
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true" style="width:250px;">
 </p>
 
 From this we can calculate the degree of similarity between two users s_{u,v} as follows:
