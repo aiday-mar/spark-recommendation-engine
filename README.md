@@ -14,11 +14,11 @@ For my course Systems for Data Science given in EPFL, we built a movie recommend
 From this we can calculate the degree of similarity between two users s_{u,v} as follows:
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq5.PNG?raw=true">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq5.PNG?raw=true" style="width:250px;">
 </p>
 
 <p align="center">
-<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true">
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq4.PNG?raw=true" style="width:300px;">
 </p>
 
 From this we can calulate the predicted rating of user u for movie i as follows:
