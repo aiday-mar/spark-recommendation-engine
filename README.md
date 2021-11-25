@@ -5,9 +5,9 @@ For my course Systems for Data Science given in EPFL, we built a movie recommend
 
 <p align="center">
 <img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq6.PNG?raw=true">
-</p>
 
-![alt text](https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true)
+<img src="https://github.com/aiday-mar/Spark-Recommendation-Engine/blob/main/eq7.PNG?raw=true">
+</p>
 
 
 From this we can calculate the degree of similarity between two users s_{u,v} as follows:
